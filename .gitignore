@@ -1,0 +1,54 @@
+# Build results
+bin/
+obj/
+out/
+*.exe
+*.dll
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider/JetBrains
+.idea/
+
+# Visual Studio Code
+.vscode/
+.vs/
+
+# ASP.NET publish folders
+wwwroot/lib/
+*.Publish.xml
+
+# Secrets
+appsettings.*.json
+secrets.json
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Entity Framework Migrations snapshots
+Migrations/
+
+# Packages
+*.nupkg
+packages/
+*.snupkg
+
+# Database (if local SQLite or development DB)
+*.db
+*.sqlite
+
+# Environment
+.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
