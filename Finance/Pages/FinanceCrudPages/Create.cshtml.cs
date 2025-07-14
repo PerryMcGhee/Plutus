@@ -13,7 +13,7 @@ using System.Security.Claims;
 
 
 
-namespace Finance.Pages.Expenses
+namespace Finance.Pages.FinanceCrudPages
 {
     [Authorize]
     public class CreateModel : PageModel
@@ -33,7 +33,7 @@ namespace Finance.Pages.Expenses
         }
 
         [BindProperty]
-        public Expense Expense { get; set; } = default!;
+        public Finances Expense { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -47,7 +47,7 @@ namespace Finance.Pages.Expenses
             Expense.User = await _userManager.GetUserAsync(User);
             Expense.CreatedAt = DateTime.UtcNow;
 
-            _context.Expenses.Add(Expense);
+            _context.Finances.Add(Expense);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

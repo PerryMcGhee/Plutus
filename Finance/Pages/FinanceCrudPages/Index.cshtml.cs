@@ -9,7 +9,7 @@ using Finance.Data;
 using Finance.Models;
 using Microsoft.AspNetCore.Authorization;   
 
-namespace Finance.Pages.Expenses
+namespace Finance.Pages.FinanceCrudPages
 {
     [Authorize]
     public class IndexModel : PageModel
@@ -21,12 +21,12 @@ namespace Finance.Pages.Expenses
             _context = context;
         }
 
-        public IList<Expense> Expense { get;set; } = default!;
+        public IList<Finances> Finances { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
             var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            Expense = await _context.Expenses
+            Finances = await _context.Finances
                 .Where(e => e.UserId == userId)
                 .Include(e => e.User)
                 .ToListAsync();

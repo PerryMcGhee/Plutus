@@ -9,7 +9,7 @@ using Finance.Data;
 using Finance.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Finance.Pages.Expenses
+namespace Finance.Pages.FinanceCrudPages
 {
     [Authorize]
     public class DetailsModel : PageModel
@@ -21,12 +21,12 @@ namespace Finance.Pages.Expenses
             _context = context;
         }
 
-        public Expense Expense { get; set; } = default!;
+        public Finances Expense { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            Expense = await _context.Expenses
+            Expense = await _context.Finances
                 .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
 
             if (id == null)
@@ -34,7 +34,7 @@ namespace Finance.Pages.Expenses
                 return NotFound();
             }
 
-            var expense = await _context.Expenses.FirstOrDefaultAsync(m => m.Id == id);
+            var expense = await _context.Finances.FirstOrDefaultAsync(m => m.Id == id);
             if (expense == null)
             {
                 return NotFound();

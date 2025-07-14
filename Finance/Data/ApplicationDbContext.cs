@@ -12,6 +12,6 @@
         {
         }
 
-        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<Finances> Finances { get; set; }
     }
 }

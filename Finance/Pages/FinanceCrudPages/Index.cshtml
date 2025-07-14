@@ -1,5 +1,5 @@
 ﻿@page
-@model Finance.Pages.Expenses.IndexModel
+@model Finance.Pages.FinanceCrudPages.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,31 +14,31 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Expense[0].Title)
+                @Html.DisplayNameFor(model => model.Finances[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Expense[0].Amount)
+                @Html.DisplayNameFor(model => model.Finances[0].Amount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Expense[0].Category)
+                @Html.DisplayNameFor(model => model.Finances[0].Category)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Expense[0].Date)
+                @Html.DisplayNameFor(model => model.Finances[0].Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Expense[0].Note)
+                @Html.DisplayNameFor(model => model.Finances[0].Note)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Expense[0].CreatedAt)
+                @Html.DisplayNameFor(model => model.Finances[0].CreatedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Expense[0].User)
+                @Html.DisplayNameFor(model => model.Finances[0].User)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Expense) {
+    @foreach (var item in Model.Finances) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
