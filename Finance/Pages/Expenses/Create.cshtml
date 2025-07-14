@@ -1,0 +1,65 @@
+﻿@page
+@model Finance.Pages.Expenses.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Expense</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Expense.Title" class="control-label"></label>
+                <input asp-for="Expense.Title" class="form-control" />
+                <span asp-validation-for="Expense.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Expense.Amount" class="control-label"></label>
+                <input asp-for="Expense.Amount" class="form-control" />
+                <span asp-validation-for="Expense.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Expense.Category" class="control-label"></label>
+                <input asp-for="Expense.Category" class="form-control" />
+                <span asp-validation-for="Expense.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Expense.Date" class="control-label"></label>
+                <input asp-for="Expense.Date" class="form-control" />
+                <span asp-validation-for="Expense.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Expense.Note" class="control-label"></label>
+                <input asp-for="Expense.Note" class="form-control" />
+                <span asp-validation-for="Expense.Note" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        ModelState is invalid. Please check your input.
+    </div>
+}
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
