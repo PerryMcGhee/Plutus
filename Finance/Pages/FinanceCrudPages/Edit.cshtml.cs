@@ -23,26 +23,25 @@ namespace Finance.Pages.FinanceCrudPages
         }
 
         [BindProperty]
-        public Finances Expense { get; set; } = default!;
+        public Finances Finance { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            Expense = await _context.Finances
-                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
 
             if (id == null)
             {
-                return NotFound();
+                return RedirectToPage("./Index");
             }
 
-            var expense =  await _context.Finances.FirstOrDefaultAsync(m => m.Id == id);
-            if (expense == null)
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            Finance = await _context.Finances
+                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
+
+            if (Finance == null)
             {
-                return NotFound();
+                return RedirectToPage("./Index");
             }
-            Expense = expense;
-           ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+
             return Page();
         }
 
@@ -55,7 +54,7 @@ namespace Finance.Pages.FinanceCrudPages
                 return Page();
             }
 
-            _context.Attach(Expense).State = EntityState.Modified;
+            _context.Attach(Finance).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +62,7 @@ namespace Finance.Pages.FinanceCrudPages
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ExpenseExists(Expense.Id))
+                if (!FinanceExists(Finance.Id))
                 {
                     return NotFound();
                 }
@@ -76,7 +75,7 @@ namespace Finance.Pages.FinanceCrudPages
             return RedirectToPage("./Index");
         }
 
-        private bool ExpenseExists(int id)
+        private bool FinanceExists(int id)
         {
             return _context.Finances.Any(e => e.Id == id);
         }

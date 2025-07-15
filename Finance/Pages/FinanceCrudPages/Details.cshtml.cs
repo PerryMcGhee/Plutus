@@ -21,28 +21,25 @@ namespace Finance.Pages.FinanceCrudPages
             _context = context;
         }
 
-        public Finances Expense { get; set; } = default!;
+        public Finances Finance { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            Expense = await _context.Finances
-                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
 
             if (id == null)
             {
-                return NotFound();
+                return RedirectToPage("./Index");
             }
 
-            var expense = await _context.Finances.FirstOrDefaultAsync(m => m.Id == id);
-            if (expense == null)
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            Finance = await _context.Finances
+                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
+
+            if (Finance == null)
             {
-                return NotFound();
+                return RedirectToPage("./Index");
             }
-            else
-            {
-                Expense = expense;
-            }
+
             return Page();
         }
     }

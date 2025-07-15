@@ -24,50 +24,43 @@ namespace Finance.Pages.FinanceCrudPages
         }
 
         [BindProperty]
-        public Finances Expense { get; set; } = default!;
+        public Finances Finance { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            Expense = await _context.Finances
-                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
-
             if (id == null)
             {
-                return NotFound();
+                return RedirectToPage("./Index");
             }
 
-            var expense = await _context.Finances.FirstOrDefaultAsync(m => m.Id == id);
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            Finance = await _context.Finances
+                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
 
-            if (expense == null)
+            if (Finance == null)
             {
-                return NotFound();
-            }
-            else
-            {
-                Expense = expense;
+                return RedirectToPage("./Index");
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            Expense = await _context.Finances
-                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
-
             if (id == null)
             {
-                return NotFound();
+                return RedirectToPage("./Index");
+            }
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            Finance = await _context.Finances
+                .FirstOrDefaultAsync(e => e.Id == id && e.UserId == userId);
+            if (Finance == null)
+            {
+                return RedirectToPage("./Index");
+
             }
 
-            var expense = await _context.Finances.FindAsync(id);
-            if (expense != null)
-            {
-                Expense = expense;
-                _context.Finances.Remove(Expense);
-                await _context.SaveChangesAsync();
-            }
+            _context.Finances.Remove(Finance);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

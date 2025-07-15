@@ -13,46 +13,46 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Expense.Id" />
+            <input type="hidden" asp-for="Finance.Id" />
             <div class="form-group">
                 <span class="text-danger">*</span>
-                <label asp-for="Expense.Title" class="control-label"></label>
-                <input asp-for="Expense.Title" class="form-control" />
-                <span asp-validation-for="Expense.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
-                <label asp-for="Expense.Amount" class="control-label"></label>
-                <input asp-for="Expense.Amount" class="form-control" />
-                <span asp-validation-for="Expense.Amount" class="text-danger"></span>
+                <label asp-for="Finance.Title" class="control-label"></label>
+                <input asp-for="Finance.Title" class="form-control" />
+                <span asp-validation-for="Finance.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <span class="text-danger">*</span>
-                <label asp-for="Expense.Category" class="control-label"></label>
-                <input asp-for="Expense.Category" class="form-control" />
-                <span asp-validation-for="Expense.Category" class="text-danger"></span>
+                <label asp-for="Finance.Amount" class="control-label"></label>
+                <input asp-for="Finance.Amount" class="form-control" />
+                <span asp-validation-for="Finance.Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <span class="text-danger">*</span>
-                <label asp-for="Expense.Date" class="control-label"></label>
-                <input asp-for="Expense.Date" class="form-control" />
-                <span asp-validation-for="Expense.Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Expense.Note" class="control-label"></label>
-                <input asp-for="Expense.Note" class="form-control" />
-                <span asp-validation-for="Expense.Note" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Expense.CreatedAt" class="control-label"></label>
-                <input asp-for="Expense.CreatedAt" class="form-control" />
-                <span asp-validation-for="Expense.CreatedAt" class="text-danger"></span>
+                <label asp-for="Finance.Category" class="control-label"></label>
+                <input asp-for="Finance.Category" class="form-control" />
+                <span asp-validation-for="Finance.Category" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <span class="text-danger">*</span>
-                <label asp-for="Expense.UserId" class="control-label"></label>
-                <select asp-for="Expense.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                <span asp-validation-for="Expense.UserId" class="text-danger"></span>
+                <label asp-for="Finance.Date" class="control-label"></label>
+                <input asp-for="Finance.Date" class="form-control" />
+                <span asp-validation-for="Finance.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Finance.Note" class="control-label"></label>
+                <input asp-for="Finance.Note" class="form-control" />
+                <span asp-validation-for="Finance.Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Finance.CreatedAt" class="control-label"></label>
+                <input asp-for="Finance.CreatedAt" class="form-control" />
+                <span asp-validation-for="Finance.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Finance.UserId" class="control-label"></label>
+                <select asp-for="Finance.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="Finance.UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
